@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -33,6 +34,7 @@ public class AdminProjectsAdapter extends RecyclerView.Adapter<AdminProjectsAdap
         Project project = projectList.get(position);
         holder.title.setText(project.getTitle());
         holder.desc.setText(project.getDescription());
+        holder.layout.setBackgroundColor(project.getProjectColor());
     }
 
     @Override
@@ -41,12 +43,14 @@ public class AdminProjectsAdapter extends RecyclerView.Adapter<AdminProjectsAdap
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, desc, genre;
+        public TextView title, desc;
+        RelativeLayout layout;
 
         public MyViewHolder(View view) {
             super(view);
             title = view.findViewById(R.id.title);
             desc = view.findViewById(R.id.description);
+            layout = view.findViewById(R.id.layout);
         }
     }
 }

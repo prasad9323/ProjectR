@@ -7,9 +7,9 @@
     app:cardCornerRadius="8dp">
 
     <RelativeLayout
+        android:id="@+id/layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         android:clickable="true"
         android:focusable="true"
         android:orientation="horizontal"

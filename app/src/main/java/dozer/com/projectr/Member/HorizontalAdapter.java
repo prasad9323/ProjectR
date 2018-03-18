@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -36,6 +37,8 @@ public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.Gr
     public void onBindViewHolder(GroceryViewHolder holder, final int position) {
         holder.Title.setText(horizontalList.get(position).getTitle());
         holder.Description.setText(horizontalList.get(position).getDescription());
+        holder.layout.setBackgroundColor(horizontalList.get(position).getProjectColor());
+
     }
 
     @Override
@@ -45,11 +48,14 @@ public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.Gr
 
     public class GroceryViewHolder extends RecyclerView.ViewHolder {
         TextView Title, Description;
+        RelativeLayout layout;
 
         public GroceryViewHolder(View view) {
             super(view);
             Title = view.findViewById(R.id.title);
             Description = view.findViewById(R.id.description);
+            layout = view.findViewById(R.id.layout);
+
         }
     }
 }

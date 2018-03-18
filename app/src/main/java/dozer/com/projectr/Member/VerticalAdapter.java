@@ -12,10 +12,10 @@ import dozer.com.projectr.Models.VerticalItem;
 import dozer.com.projectr.R;
 
 public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.MyViewHolder> {
-    private List<VerticalItem> verticalItemList;
+    private List<VerticalItem> moviesList;
 
-    public VerticalAdapter(List<VerticalItem> verticalItemList) {
-        this.verticalItemList = verticalItemList;
+    public VerticalAdapter(List<VerticalItem> moviesList) {
+        this.moviesList = moviesList;
     }
 
     @Override
@@ -27,13 +27,13 @@ public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.MyView
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        VerticalItem verticalItem = verticalItemList.get(position);
+        VerticalItem verticalItem = moviesList.get(position);
         holder.title.setText(verticalItem.getTitle());
     }
 
     @Override
     public int getItemCount() {
-        return verticalItemList.size();
+        return moviesList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

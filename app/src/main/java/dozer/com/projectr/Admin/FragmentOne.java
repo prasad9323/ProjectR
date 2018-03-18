@@ -109,6 +109,7 @@ public class FragmentOne extends Fragment {
         project.setRepository("Git");
         project.setUrl("http://someproject.somedomain.com");
         project.setThumbnail("Thumbnail url");
+        project.setProjectColor(getResources().getColor(R.color.tempColor1));
         Project project1 = new Project();
         project1.setTitle("Project two");
         project1.setDescription("Some project1 that gets things done");
@@ -127,6 +128,7 @@ public class FragmentOne extends Fragment {
         project1.setRepository("Git");
         project1.setUrl("http://someproject1.somedomain.com");
         project1.setThumbnail("Thumbnail url");
+        project1.setProjectColor(getResources().getColor(R.color.tempColor2));
         Project project2 = new Project();
         project2.setTitle("Project three");
         project2.setDescription("Some project2 that gets things done");
@@ -145,6 +147,7 @@ public class FragmentOne extends Fragment {
         project2.setRepository("Git");
         project2.setUrl("http://someproject2.somedomain.com");
         project2.setThumbnail("Thumbnail url");
+        project2.setProjectColor(getResources().getColor(R.color.tempColor3));
         Project project3 = new Project();
         project3.setTitle("Project four");
         project3.setDescription("Some project3 that gets things done");
@@ -163,6 +166,7 @@ public class FragmentOne extends Fragment {
         project3.setRepository("Git");
         project3.setUrl("http://someproject3.somedomain.com");
         project3.setThumbnail("Thumbnail url");
+        project3.setProjectColor(getResources().getColor(R.color.tempColor4));
         Project project4 = new Project();
         project4.setTitle("Project five");
         project4.setDescription("Some project4 that gets things done");
@@ -181,6 +185,7 @@ public class FragmentOne extends Fragment {
         project4.setRepository("Git");
         project4.setUrl("http://someproject4.somedomain.com");
         project4.setThumbnail("Thumbnail url");
+        project4.setProjectColor(getResources().getColor(R.color.tempColor5));
         projectVerticalList.add(project);
         projectVerticalList.add(project1);
         projectVerticalList.add(project2);

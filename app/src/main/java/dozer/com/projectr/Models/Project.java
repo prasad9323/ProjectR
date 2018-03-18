@@ -21,6 +21,15 @@ public class Project {
     public String Repository;
     public String Url;
     public String Thumbnail;
+    public Integer ProjectColor;
+
+    public Integer getProjectColor() {
+        return ProjectColor;
+    }
+
+    public void setProjectColor(Integer projectColor) {
+        ProjectColor = projectColor;
+    }
 
     public String getThumbnail() {
         return Thumbnail;

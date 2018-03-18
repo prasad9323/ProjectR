@@ -6,4 +6,10 @@
     <color name="colorActivityBackground">#ffffff</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#757575</color>
+    <color name="tempColor1">#448AFF</color>
+    <color name="tempColor2">#FF4081</color>
+    <color name="tempColor3">#9C27B0</color>
+    <color name="tempColor4">#7C4DFF</color>
+    <color name="tempColor5">#8BC34A</color>
+    <color name="tempColor6">#607D8B</color>
 </resources>

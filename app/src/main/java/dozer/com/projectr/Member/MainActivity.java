@@ -1,6 +1,7 @@
 package dozer.com.projectr.Member;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import dozer.com.projectr.Admin.AdminActivity;
 import dozer.com.projectr.Models.Project;
 import dozer.com.projectr.Models.VerticalItem;
 import dozer.com.projectr.R;
@@ -110,6 +112,13 @@ public class MainActivity extends AppCompatActivity
         animation = AnimationUtils.loadLayoutAnimation(getApplicationContext(), resId);
         recyclerView.setLayoutAnimation(animation);
         prepareVerticalData();
+        bell = findViewById(R.id.bell);
+        bell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, AdminActivity.class));
+            }
+        });
     }
 
     private void runLayoutAnimation(final RecyclerView recyclerView) {
@@ -125,24 +134,31 @@ public class MainActivity extends AppCompatActivity
         Project project1 = new Project();
         project1.setTitle("Project 1");
         project1.setDescription("8 Tasks");
+        project1.setProjectColor(getResources().getColor(R.color.tempColor1));
         Project project2 = new Project();
         project2.setTitle("Project 2");
         project2.setDescription("2 Tasks");
+        project2.setProjectColor(getResources().getColor(R.color.tempColor2));
         Project project3 = new Project();
         project3.setTitle("Project 3");
         project3.setDescription("5 Tasks");
+        project3.setProjectColor(getResources().getColor(R.color.tempColor3));
         Project project4 = new Project();
         project4.setTitle("Project 4");
         project4.setDescription("9 Tasks");
+        project4.setProjectColor(getResources().getColor(R.color.tempColor4));
         Project project5 = new Project();
         project5.setTitle("Project 5");
         project5.setDescription("11 Tasks");
+        project5.setProjectColor(getResources().getColor(R.color.tempColor5));
         Project project6 = new Project();
         project6.setTitle("Project 6");
         project6.setDescription("4 Tasks");
+        project6.setProjectColor(getResources().getColor(R.color.tempColor6));
         Project project7 = new Project();
         project7.setTitle("Project 7");
         project7.setDescription("1 Task");
+        project7.setProjectColor(getResources().getColor(R.color.tempColor1));
         projectList.add(project1);
         projectList.add(project2);
         projectList.add(project3);
