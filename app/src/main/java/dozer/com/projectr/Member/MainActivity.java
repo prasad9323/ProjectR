@@ -1,24 +1,28 @@
 package dozer.com.projectr.Member;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -33,12 +37,16 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     ImageView toggle, bell;
     DrawerLayout drawer;
+    FloatingActionButton fab;
+    LinearLayout addTaskLayout;
+    RelativeLayout mainLayout;
     private List<Project> projectList = new ArrayList<>();
     private RecyclerView groceryRecyclerView;
     private HorizontalAdapter horizontalListAdapter;
     private List<VerticalItem> verticalList = new ArrayList<>();
     private RecyclerView recyclerView;
     private VerticalAdapter mAdapter;
+    private boolean isOpen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +57,11 @@ public class MainActivity extends AppCompatActivity
         initiateViews();
         /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);*/
-        FloatingActionButton fab = findViewById(R.id.fab);
+        fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                viewMenu();
             }
         });
         /*ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -119,6 +126,8 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(MainActivity.this, AdminActivity.class));
             }
         });
+        addTaskLayout = findViewById(R.id.addTaskLayout);
+        mainLayout = findViewById(R.id.mainLayout);
     }
 
     private void runLayoutAnimation(final RecyclerView recyclerView) {
@@ -128,6 +137,71 @@ public class MainActivity extends AppCompatActivity
         recyclerView.setLayoutAnimation(controller);
         recyclerView.getAdapter().notifyDataSetChanged();
         recyclerView.scheduleLayoutAnimation();
+    }
+
+    private void viewMenu() {
+        if (!isOpen) {
+            Log.e("IsOpen", "yes");
+            float x = fab.getX();
+            float y = fab.getY();
+            int startRadius = 0;
+            int endRadius = (int) Math.hypot(mainLayout.getWidth(), mainLayout.getHeight());
+            Animator anim = ViewAnimationUtils.createCircularReveal(addTaskLayout, Math.round(x), Math.round(y), startRadius, endRadius);
+            addTaskLayout.setVisibility(View.VISIBLE);
+            mainLayout.setVisibility(View.GONE);
+            anim.start();
+            ImageView back = findViewById(R.id.back);
+            back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    closeMenu();
+                }
+            });
+            isOpen = true;
+        } else {
+            Log.e("IsOpen", "no");
+            int x = addTaskLayout.getRight();
+            int y = addTaskLayout.getBottom();
+            int startRadius = Math.max(fab.getWidth(), fab.getHeight());
+            int endRadius = 0;
+            Animator anim = ViewAnimationUtils.createCircularReveal(addTaskLayout, x, y, startRadius, endRadius);
+            anim.addListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animator) {
+                    Log.e("Animation", "Start");
+                }
+
+                @Override
+                public void onAnimationEnd(Animator animator) {
+                    addTaskLayout.setVisibility(View.GONE);
+                    Log.e("Animation", "End");
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animator) {
+                    Log.e("Animation", "Cancel");
+                }
+
+                @Override
+                public void onAnimationRepeat(Animator animator) {
+                    Log.e("Animation", "Repeat");
+                }
+            });
+            anim.start();
+            isOpen = false;
+        }
+    }
+
+    private void closeMenu() {
+        ImageView back = findViewById(R.id.back);
+        float x = back.getX();
+        float y = back.getY();
+        int startRadius = 0;
+        int endRadius = (int) Math.hypot(addTaskLayout.getWidth(), addTaskLayout.getHeight());
+        Animator anim = ViewAnimationUtils.createCircularReveal(mainLayout, Math.round(x), Math.round(y), startRadius, endRadius);
+        mainLayout.setVisibility(View.VISIBLE);
+        addTaskLayout.setVisibility(View.GONE);
+        anim.start();
     }
 
     private void populateHorizontalList() {

@@ -23,5 +23,9 @@
             android:exported="true"
             android:label="@string/title_activity_admin"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Member.AddPersonalTaskActivity"
+            android:label="@string/title_activity_add_personal_task"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 </manifest>

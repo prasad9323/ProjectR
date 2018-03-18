@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#3F51B5</color>
+    <color name="colorAccent">#673AB7</color>
+    <color name="colorAccentTrans">#8d7b7b7b</color>
     <color name="colorActivityBackground">#ffffff</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#757575</color>
@@ -12,4 +13,5 @@
     <color name="tempColor4">#7C4DFF</color>
     <color name="tempColor5">#8BC34A</color>
     <color name="tempColor6">#607D8B</color>
+    <color name="purple">#673AB7</color>
 </resources>
