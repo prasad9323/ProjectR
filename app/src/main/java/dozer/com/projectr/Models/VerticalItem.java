@@ -1,15 +1,15 @@
-package dozer.com.projectr.Member;
+package dozer.com.projectr.Models;
 
 /**
  * Created by Lincoln on 15/01/16.
  */
-public class Movie {
+public class VerticalItem {
     private String title, genre, year;
 
-    public Movie() {
+    public VerticalItem() {
     }
 
-    public Movie(String title, String genre, String year) {
+    public VerticalItem(String title, String genre, String year) {
         this.title = title;
         this.genre = genre;
         this.year = year;

@@ -27,11 +27,12 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return FragmentWithOneImage.newInstance("Fragment 1", R.drawable.ic_arrow_back_black_24dp);
+                return FragmentOne.newInstance("Fragment 1", R.drawable.ic_arrow_back_black_24dp);
             case 1:
-                return FragmentWithOneImage.newInstance("Fragment 2", R.drawable.ic_arrow_back_black_24dp);
+                return FragmentTwo.newInstance("Fragment 2", R.drawable.ic_arrow_back_black_24dp, R.drawable.ic_arrow_back_black_24dp);
             case 2:
-                return FragmentWithTwoImages.newInstance("Fragment 3", R.drawable.ic_arrow_back_black_24dp, R.drawable.ic_arrow_back_black_24dp);
+                return FragmentThree.newInstance("Fragment 3", R.drawable.ic_arrow_back_black_24dp);
+
             default:
                 return null;
         }

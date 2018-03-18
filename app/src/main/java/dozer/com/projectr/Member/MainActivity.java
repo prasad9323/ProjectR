@@ -23,16 +23,18 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import dozer.com.projectr.Models.Project;
+import dozer.com.projectr.Models.VerticalItem;
 import dozer.com.projectr.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     ImageView toggle, bell;
     DrawerLayout drawer;
-    private List<HorizontalItem> horizontalItemList = new ArrayList<>();
+    private List<Project> projectList = new ArrayList<>();
     private RecyclerView groceryRecyclerView;
     private HorizontalAdapter horizontalListAdapter;
-    private List<Movie> verticalList = new ArrayList<>();
+    private List<VerticalItem> verticalList = new ArrayList<>();
     private RecyclerView recyclerView;
     private VerticalAdapter mAdapter;
 
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity
         });
         groceryRecyclerView = findViewById(R.id.recycler_view_horizontal);
         //groceryRecyclerView.addItemDecoration(new DividerItemDecoration(MainActivity.this, LinearLayoutManager.HORIZONTAL));
-        horizontalListAdapter = new HorizontalAdapter(horizontalItemList, getApplicationContext());
+        horizontalListAdapter = new HorizontalAdapter(projectList, getApplicationContext());
         LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         groceryRecyclerView.setLayoutManager(horizontalLayoutManager);
         groceryRecyclerView.setAdapter(horizontalListAdapter);
@@ -96,8 +98,8 @@ public class MainActivity extends AppCompatActivity
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Movie movie = verticalList.get(position);
-                Toast.makeText(getApplicationContext(), movie.getTitle() + " is selected!", Toast.LENGTH_SHORT).show();
+                VerticalItem verticalItem = verticalList.get(position);
+                Toast.makeText(getApplicationContext(), verticalItem.getTitle() + " is selected!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -120,70 +122,70 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void populateHorizontalList() {
-        HorizontalItem horizontalItem1 = new HorizontalItem();
-        horizontalItem1.setTitle("Project 1");
-        horizontalItem1.setSubtitle("8 Tasks");
-        HorizontalItem horizontalItem2 = new HorizontalItem();
-        horizontalItem2.setTitle("Project 2");
-        horizontalItem2.setSubtitle("2 Tasks");
-        HorizontalItem horizontalItem3 = new HorizontalItem();
-        horizontalItem3.setTitle("Project 3");
-        horizontalItem3.setSubtitle("5 Tasks");
-        HorizontalItem horizontalItem4 = new HorizontalItem();
-        horizontalItem4.setTitle("Project 4");
-        horizontalItem4.setSubtitle("9 Tasks");
-        HorizontalItem horizontalItem5 = new HorizontalItem();
-        horizontalItem5.setTitle("Project 5");
-        horizontalItem5.setSubtitle("11 Tasks");
-        HorizontalItem horizontalItem6 = new HorizontalItem();
-        horizontalItem6.setTitle("Project 6");
-        horizontalItem6.setSubtitle("4 Tasks");
-        HorizontalItem horizontalItem7 = new HorizontalItem();
-        horizontalItem7.setTitle("Project 7");
-        horizontalItem7.setSubtitle("1 Task");
-        horizontalItemList.add(horizontalItem1);
-        horizontalItemList.add(horizontalItem2);
-        horizontalItemList.add(horizontalItem3);
-        horizontalItemList.add(horizontalItem4);
-        horizontalItemList.add(horizontalItem5);
-        horizontalItemList.add(horizontalItem6);
-        horizontalItemList.add(horizontalItem7);
+        Project project1 = new Project();
+        project1.setTitle("Project 1");
+        project1.setDescription("8 Tasks");
+        Project project2 = new Project();
+        project2.setTitle("Project 2");
+        project2.setDescription("2 Tasks");
+        Project project3 = new Project();
+        project3.setTitle("Project 3");
+        project3.setDescription("5 Tasks");
+        Project project4 = new Project();
+        project4.setTitle("Project 4");
+        project4.setDescription("9 Tasks");
+        Project project5 = new Project();
+        project5.setTitle("Project 5");
+        project5.setDescription("11 Tasks");
+        Project project6 = new Project();
+        project6.setTitle("Project 6");
+        project6.setDescription("4 Tasks");
+        Project project7 = new Project();
+        project7.setTitle("Project 7");
+        project7.setDescription("1 Task");
+        projectList.add(project1);
+        projectList.add(project2);
+        projectList.add(project3);
+        projectList.add(project4);
+        projectList.add(project5);
+        projectList.add(project6);
+        projectList.add(project7);
         horizontalListAdapter.notifyDataSetChanged();
     }
 
     private void prepareVerticalData() {
-        Movie movie = new Movie("Mad Max: Fury Road", "Action & Adventure", "2015");
-        verticalList.add(movie);
-        movie = new Movie("Inside Out", "Animation, Kids & Family", "2015");
-        verticalList.add(movie);
-        movie = new Movie("Star Wars: Episode VII - The Force Awakens", "Action", "2015");
-        verticalList.add(movie);
-        movie = new Movie("Shaun the Sheep", "Animation", "2015");
-        verticalList.add(movie);
-        movie = new Movie("The Martian", "Science Fiction & Fantasy", "2015");
-        verticalList.add(movie);
-        movie = new Movie("Mission: Impossible Rogue Nation", "Action", "2015");
-        verticalList.add(movie);
-        movie = new Movie("Up", "Animation", "2009");
-        verticalList.add(movie);
-        movie = new Movie("Star Trek", "Science Fiction", "2009");
-        verticalList.add(movie);
-        movie = new Movie("The LEGO Movie", "Animation", "2014");
-        verticalList.add(movie);
-        movie = new Movie("Iron Man", "Action & Adventure", "2008");
-        verticalList.add(movie);
-        movie = new Movie("Aliens", "Science Fiction", "1986");
-        verticalList.add(movie);
-        movie = new Movie("Chicken Run", "Animation", "2000");
-        verticalList.add(movie);
-        movie = new Movie("Back to the Future", "Science Fiction", "1985");
-        verticalList.add(movie);
-        movie = new Movie("Raiders of the Lost Ark", "Action & Adventure", "1981");
-        verticalList.add(movie);
-        movie = new Movie("Goldfinger", "Action & Adventure", "1965");
-        verticalList.add(movie);
-        movie = new Movie("Guardians of the Galaxy", "Science Fiction & Fantasy", "2014");
-        verticalList.add(movie);
+        VerticalItem verticalItem = new VerticalItem("Mad Max: Fury Road", "Action & Adventure", "2015");
+        verticalList.add(verticalItem);
+        verticalItem = new VerticalItem("Inside Out", "Animation, Kids & Family", "2015");
+        verticalList.add(verticalItem);
+        verticalItem = new VerticalItem("Star Wars: Episode VII - The Force Awakens", "Action", "2015");
+        verticalList.add(verticalItem);
+        verticalItem = new VerticalItem("Shaun the Sheep", "Animation", "2015");
+        verticalList.add(verticalItem);
+        verticalItem = new VerticalItem("The Martian", "Science Fiction & Fantasy", "2015");
+        verticalList.add(verticalItem);
+        verticalItem = new VerticalItem("Mission: Impossible Rogue Nation", "Action", "2015");
+        verticalList.add(verticalItem);
+        verticalItem = new VerticalItem("Up", "Animation", "2009");
+        verticalList.add(verticalItem);
+        verticalItem = new VerticalItem("Star Trek", "Science Fiction", "2009");
+        verticalList.add(verticalItem);
+        verticalItem = new VerticalItem("The LEGO VerticalItem", "Animation", "2014");
+        verticalList.add(verticalItem);
+        verticalItem = new VerticalItem("Iron Man", "Action & Adventure", "2008");
+        verticalList.add(verticalItem);
+        verticalItem = new VerticalItem("Aliens", "Science Fiction", "1986");
+        verticalList.add(verticalItem);
+        verticalItem = new VerticalItem("Chicken Run", "Animation", "2000");
+        verticalList.add(verticalItem);
+        verticalItem = new VerticalItem("Back to the Future", "Science Fiction", "1985");
+        verticalList.add(verticalItem);
+        verticalItem = new VerticalItem("Raiders of the Lost Ark", "Action & Adventure", "1981");
+        verticalList.add(verticalItem);
+        verticalItem = new VerticalItem("Goldfinger", "Action & Adventure", "1965");
+        verticalList.add(verticalItem);
+        verticalItem = new VerticalItem("Guardians of the Galaxy", "Science Fiction & Fantasy", "2014");
+        verticalList.add(verticalItem);
         // notify adapter about data set changes
         // so that it will render the list with new data
         mAdapter.notifyDataSetChanged();

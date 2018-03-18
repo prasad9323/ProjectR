@@ -1,4 +1,4 @@
-package dozer.com.projectr.Member;
+package dozer.com.projectr.Admin;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,40 +8,45 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import dozer.com.projectr.Models.VerticalItem;
+import dozer.com.projectr.Models.Project;
 import dozer.com.projectr.R;
 
-public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.MyViewHolder> {
-    private List<VerticalItem> verticalItemList;
+/**
+ * Created by Prasad on 18-Mar-18.
+ */
+public class AdminProjectsAdapter extends RecyclerView.Adapter<AdminProjectsAdapter.MyViewHolder> {
+    private List<Project> projectList;
 
-    public VerticalAdapter(List<VerticalItem> verticalItemList) {
-        this.verticalItemList = verticalItemList;
+    public AdminProjectsAdapter(List<Project> projectList) {
+        this.projectList = projectList;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_vertical_recycler, parent, false);
+                .inflate(R.layout.item_project_vertical, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        VerticalItem verticalItem = verticalItemList.get(position);
-        holder.title.setText(verticalItem.getTitle());
+        Project project = projectList.get(position);
+        holder.title.setText(project.getTitle());
+        holder.desc.setText(project.getDescription());
     }
 
     @Override
     public int getItemCount() {
-        return verticalItemList.size();
+        return projectList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, year, genre;
+        public TextView title, desc, genre;
 
         public MyViewHolder(View view) {
             super(view);
             title = view.findViewById(R.id.title);
+            desc = view.findViewById(R.id.description);
         }
     }
 }

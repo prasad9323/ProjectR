@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import dozer.com.projectr.Models.Project;
 import dozer.com.projectr.R;
 
 /**
@@ -16,9 +17,9 @@ import dozer.com.projectr.R;
  */
 public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.GroceryViewHolder> {
     Context context;
-    private List<HorizontalItem> horizontalList;
+    private List<Project> horizontalList;
 
-    public HorizontalAdapter(List<HorizontalItem> horizontalGrocderyList, Context context) {
+    public HorizontalAdapter(List<Project> horizontalGrocderyList, Context context) {
         this.horizontalList = horizontalGrocderyList;
         this.context = context;
     }
@@ -34,7 +35,7 @@ public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.Gr
     @Override
     public void onBindViewHolder(GroceryViewHolder holder, final int position) {
         holder.Title.setText(horizontalList.get(position).getTitle());
-        holder.Subtitle.setText(horizontalList.get(position).getSubtitle());
+        holder.Description.setText(horizontalList.get(position).getDescription());
     }
 
     @Override
@@ -43,12 +44,12 @@ public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.Gr
     }
 
     public class GroceryViewHolder extends RecyclerView.ViewHolder {
-        TextView Title, Subtitle;
+        TextView Title, Description;
 
         public GroceryViewHolder(View view) {
             super(view);
             Title = view.findViewById(R.id.title);
-            Subtitle = view.findViewById(R.id.subtitle);
+            Description = view.findViewById(R.id.description);
         }
     }
 }

@@ -12,5 +12,6 @@
         android:id="@+id/recycler_view_vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clipToPadding="true"
         android:scrollbars="vertical" />
 </RelativeLayout>
