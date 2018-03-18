@@ -27,14 +27,14 @@ import dozer.com.projectr.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    ImageView toggle, bell;
+    DrawerLayout drawer;
     private List<HorizontalItem> horizontalItemList = new ArrayList<>();
     private RecyclerView groceryRecyclerView;
     private HorizontalAdapter horizontalListAdapter;
     private List<Movie> verticalList = new ArrayList<>();
     private RecyclerView recyclerView;
     private VerticalAdapter mAdapter;
-    ImageView toggle, bell;
-    DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity
         initiateViews();
         /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);*/
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,12 +56,12 @@ public class MainActivity extends AppCompatActivity
         /*ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
                 */
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
     private void initiateViews() {
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         toggle = findViewById(R.id.toggle);
         bell = findViewById(R.id.bell);
         toggle.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getApplicationContext(), resId);
         groceryRecyclerView.setLayoutAnimation(animation);
         populateHorizontalList();
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view_vertical);
+        recyclerView = findViewById(R.id.recycler_view_vertical);
         mAdapter = new VerticalAdapter(verticalList);
         recyclerView.setHasFixedSize(true);
         // vertical RecyclerView
@@ -109,15 +109,16 @@ public class MainActivity extends AppCompatActivity
         recyclerView.setLayoutAnimation(animation);
         prepareVerticalData();
     }
+
     private void runLayoutAnimation(final RecyclerView recyclerView) {
         final Context context = recyclerView.getContext();
         final LayoutAnimationController controller =
                 AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_fall_down);
-
         recyclerView.setLayoutAnimation(controller);
         recyclerView.getAdapter().notifyDataSetChanged();
         recyclerView.scheduleLayoutAnimation();
     }
+
     private void populateHorizontalList() {
         HorizontalItem horizontalItem1 = new HorizontalItem();
         horizontalItem1.setTitle("Project 1");
@@ -190,7 +191,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -231,7 +232,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
         } else if (id == R.id.nav_send) {
         }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
